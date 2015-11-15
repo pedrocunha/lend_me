@@ -34,6 +34,8 @@ class Loan
   def check_if_valid_amount!
     if @amount < 100
       raise ArgumentError.new("Loan amount must be higher or equal than 100.")
+    elsif @amount % 100 != 0
+      raise ArgumentError.new("Loan amount must be a multiple of 100.")
     elsif @amount > 15000
       raise ArgumentError.new("Loan amount must be less or equal than 15000.")
     end

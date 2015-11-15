@@ -15,8 +15,17 @@ module LendMe
       end
     end
 
-    context "when amount is less higher than 15000" do
-      let(:amount) { 150001 }
+    context "when amount is not a multiple of 100" do
+      let(:amount) { 105 }
+
+      it "throws an error" do
+        expect { subject.call }
+          .to raise_error(ArgumentError, "Loan amount must be a multiple of 100.")
+      end
+    end
+
+    context "when amount is higher than 15000" do
+      let(:amount) { 150100 }
 
       it "throws an error" do
         expect { subject.call }
