@@ -16,7 +16,7 @@ module LendMe
       CSV.foreach(path, headers: true) do |row|
         attributes = {
           name: row.fetch("Lender"),
-          interest: row.fetch("Rate"),
+          rate: row.fetch("Rate"),
           amount: row.fetch("Available")
         }
         result << Lender.new(attributes)

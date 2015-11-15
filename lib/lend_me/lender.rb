@@ -1,11 +1,11 @@
 module LendMe
   class Lender
-    attr_reader :name, :interest, :amount
+    attr_reader :name, :rate, :amount
 
-    def initialize(name:, interest:, amount:)
-      @name     = name
-      @interest = interest
-      @amount   = amount
+    def initialize(name:, rate:, amount:)
+      @name   = name
+      @rate   = rate
+      @amount = amount
     end
   end
 end
