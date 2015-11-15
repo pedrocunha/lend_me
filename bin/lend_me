@@ -33,7 +33,7 @@ if !options.market_path || !options.amount
 end
 
 market = LendMe::Market.new(options.market_path)
-loan   = Loan.new(market, options.amount)
+loan   = LendMe::Loan.new(market, options.amount)
 
 begin
   result = loan.call
