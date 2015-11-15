@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require 'ostruct'
+require 'lend_me'
+
+options = OpenStruct.new
+parser  = OptionParser.new do |opts|
+  opts.banner = "Usage: lend_me [options]"
+
+  opts.on("-m", "--market PATH_TO_MARKET_CSV") do |market_path|
+    options.market_path = market_path
+  end
+
+  opts.on("-a", "--amount AMOUNT", Integer, "Amount to loan") do |amount|
+    options.amount = amount
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts LendMe::VERSION
+    exit
+  end
+end
+parser.parse!
+
+if !options.market_path || !options.amount
+  puts parser
+  exit
+end
+
+market = LendMe::Market.new(options.market_path)
+loan   = Loan.new(market, options.amount)
+
+begin
+  result = loan.call
+  puts "Requested amount: £#{options.amount}"
+  puts "Rate: £-"
+  puts "Monthly repayment: £#{result[:monthly_repayment]}"
+  puts "Total repayment: £#{result[:total_repayment]}"
+rescue ArgumentError => e
+  puts e.message
+end

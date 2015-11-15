@@ -50,6 +50,6 @@ class Loan
   end
 
   def total_repayment(repayments)
-    @total_repayment ||= monthly_repayment(repayments) * MonthlyRepaymentCalculator::NUMBER_OF_PAYMENTS
+    @total_repayment ||= (monthly_repayment(repayments) * MonthlyRepaymentCalculator::NUMBER_OF_PAYMENTS).round(2)
   end
 end
