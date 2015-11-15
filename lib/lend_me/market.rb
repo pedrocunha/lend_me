@@ -9,6 +9,10 @@ module LendMe
       @lenders = load_lenders(csv_path)
     end
 
+    def funds
+      @lenders.sum(&:amount)
+    end
+
     private
 
     def load_lenders(path)
