@@ -4,4 +4,4 @@ module LendMe
   # Your code goes here...
 end
 
-require 'lend_me/lender'
+require 'lend_me/market'
