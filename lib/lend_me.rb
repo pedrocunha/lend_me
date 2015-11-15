@@ -4,4 +4,5 @@ module LendMe
 end
 
 require 'lend_me/market'
+require 'lend_me/loan'
 require 'lend_me/monthly_repayment_calculator'
