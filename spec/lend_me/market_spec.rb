@@ -7,9 +7,22 @@ module LendMe
       expect(subject.lenders.size).to eql(7)
     end
 
+    it "sorts lenders by rate" do
+      expect(subject.lenders.map(&:name))
+        .to eql([
+          "Jane",
+          "Fred",
+          "Angela",
+          "Dave",
+          "Bob",
+          "John",
+          "Mary"
+        ])
+    end
+
     describe "#funds" do
       it "returns the total amount of funds" do
-        expect(subject.funds).to eql(2330)
+        expect(subject.funds).to eql(2330.0)
       end
     end
   end

@@ -10,22 +10,28 @@ module LendMe
     end
 
     def funds
-      @lenders.sum(&:amount)
+      @lenders.map(&:amount).inject(:+)
     end
 
     private
 
+    # Make sure lenders are sorted out by
+    # best favourable rates for loans
     def load_lenders(path)
       result = []
+
       CSV.foreach(path, headers: true) do |row|
         attributes = {
-          name: row.fetch("Lender"),
-          rate: row.fetch("Rate"),
-          amount: row.fetch("Available")
+          name:   row.fetch("Lender"),
+          rate:   row.fetch("Rate").to_f,
+          amount: row.fetch("Available").to_f
         }
         result << Lender.new(attributes)
       end
-      result
+
+      result.sort_by do |lender|
+        [lender.rate, -1 * lender.amount]
+      end
     end
   end
 end
