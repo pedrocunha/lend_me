@@ -1,38 +1,49 @@
 # LendMe
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lend_me`. To experiment with that code, run `bin/console` for an interactive prompt.
+LendMe is a command line tool that allows prospective borrowers to
+obtain a quote from a pool of lenders for 36 month loans.
 
-TODO: Delete this and the text above, and describe your gem
+The pool of lenders is initialized via csv file containing the name of
+the lender, its rate and amount available to lend.
+
+The tool strives to provide as low a rate to the borrower as is possible to be
+competitive.
+
+Borrowers can request a loan of any £100 increment between £1000
+and £15000 inclusive. If the market does not have sufficient offers from
+lenders to satisfy the loan then the tool will inform is not possible to
+provide a quote at that time.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'lend_me'
-```
-
-And then execute:
-
+    $ git clone https://github.com/pedrocunha/lend_me.git
+    $ cd lend_me
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install lend_me
+    $ bundle exec rake install
 
 ## Usage
 
-TODO: Write usage instructions here
+  ```
+  Usage: lend_me [options]
+      -m, --market PATH_TO_MARKET_CSV
+      -a, --amount AMOUNT              Amount to loan
+      -h, --help                       Show this message
+      -v, --version                    Show version
+  ```
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Example:
+  ```
+  $ lend_me -m spec/fixtures/market.csv -a 1000
+  Requested amount: £1000
+  Rate: £-
+  Monthly repayment: £30.88
+  Total repayment: £1111.68
+  ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lend_me. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/pedrocunha/lend_me. This project is intended to be a safe, welcoming space for collaboration,
+and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
