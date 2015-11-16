@@ -33,8 +33,8 @@ module LendMe
     private
 
     def check_if_valid_amount!
-      if @amount < 100
-        raise ArgumentError.new("Loan amount must be higher or equal than 100.")
+      if @amount < 1000
+        raise ArgumentError.new("Loan amount must be higher or equal than 1000.")
       elsif @amount % 100 != 0
         raise ArgumentError.new("Loan amount must be a multiple of 100.")
       elsif @amount > 15000

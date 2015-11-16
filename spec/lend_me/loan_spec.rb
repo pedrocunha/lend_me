@@ -6,17 +6,17 @@ module LendMe
 
     subject { described_class.new(market, amount) }
 
-    context "when amount is less than 100" do
-      let(:amount) { 99 }
+    context "when amount is less than 1000" do
+      let(:amount) { 999}
 
       it "throws an error" do
         expect { subject.call }
-          .to raise_error(ArgumentError, "Loan amount must be higher or equal than 100.")
+          .to raise_error(ArgumentError, "Loan amount must be higher or equal than 1000.")
       end
     end
 
     context "when amount is not a multiple of 100" do
-      let(:amount) { 105 }
+      let(:amount) { 1005 }
 
       it "throws an error" do
         expect { subject.call }
