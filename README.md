@@ -35,7 +35,6 @@ Example:
   ```
   $ lend_me -m spec/fixtures/market.csv -a 1000
   Requested amount: £1000
-  Rate: £-
   Monthly repayment: £30.88
   Total repayment: £1111.68
   ```

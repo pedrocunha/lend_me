@@ -8,7 +8,7 @@ class MonthlyRepaymentCalculator
   end
 
   def call
-    @result ||= compute.round(4)
+    @result ||= compute.round(2)
   end
 
   private

@@ -38,7 +38,7 @@ loan   = LendMe::Loan.new(market, options.amount)
 begin
   result = loan.call
   puts "Requested amount: £#{options.amount}"
-  puts "Rate: £-"
+   # puts "Rate: £-"
   puts "Monthly repayment: £#{result[:monthly_repayment]}"
   puts "Total repayment: £#{result[:total_repayment]}"
 rescue ArgumentError => e
